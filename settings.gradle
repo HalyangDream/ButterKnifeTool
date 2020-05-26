@@ -1,0 +1,4 @@
+rootProject.name='ButterkinfTool'
+include ':app'
+include ':complier'
+include ':annotationlib'
