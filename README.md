@@ -1,0 +1,2 @@
+# ButterKnifeTool
+使用APT和反射两种方式仿写ButterKnife的BindView
