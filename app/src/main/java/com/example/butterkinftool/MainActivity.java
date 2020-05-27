@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
 
+import com.example.annotationlib.BindClick;
 import com.example.annotationlib.BindView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -30,6 +31,11 @@ public class MainActivity extends AppCompatActivity {
 
     @OnClick(R.id.hello_world)
     public void viewClick(View v) {
-        Toast.makeText(this, "vvvvv=" + v.getId(), Toast.LENGTH_LONG).show();
+        Toast.makeText(this, "我是运行时编译", Toast.LENGTH_LONG).show();
+    }
+
+    @BindClick({R.id.hello_world_1, R.id.hello_world_2})
+    public void bindClick(View view) {
+        Toast.makeText(this, "我是编译期", Toast.LENGTH_LONG).show();
     }
 }
