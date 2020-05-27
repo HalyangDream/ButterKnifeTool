@@ -107,38 +107,39 @@ public class ButterKinferProcessor extends AbstractProcessor {
         //存放注解成员变量
         Set<Element> bindViews = null;
 
-        //存放注解点击事件的方法
-        if (bindViewElements == null || bindViewElements.size() == 0) {
-            return false;
-        }
         LoggerInfo("process start");
-        for (Element element : bindViewElements) {
-            TypeElement typeElement = (TypeElement) element.getEnclosingElement();
-            Set<Element> elements = routesMap.get(typeElement);
-            LoggerInfo("typeElement " + typeElement.getSimpleName());
-            LoggerInfo("typeElement " + typeElement.getQualifiedName());
-            LoggerInfo("typeElement " + typeElement.asType());
-            LoggerInfo("element " + element.getSimpleName());
-            if (elements != null) {
-                elements.add(element);
-            } else {
-                bindViews = new HashSet<>();
-                bindViews.add(element);
-                routesMap.put(typeElement, bindViews);
+        if (bindViewElements != null && bindViewElements.size() > 0) {
+
+            for (Element element : bindViewElements) {
+                TypeElement typeElement = (TypeElement) element.getEnclosingElement();
+                Set<Element> elements = routesMap.get(typeElement);
+                LoggerInfo("typeElement " + typeElement.getSimpleName());
+                LoggerInfo("typeElement " + typeElement.getQualifiedName());
+                LoggerInfo("typeElement " + typeElement.asType());
+                LoggerInfo("element " + element.getSimpleName());
+                if (elements != null) {
+                    elements.add(element);
+                } else {
+                    bindViews = new HashSet<>();
+                    bindViews.add(element);
+                    routesMap.put(typeElement, bindViews);
+                }
             }
         }
 
-        for (Element element : clickViewElements) {
-            //这是类名称
-            TypeElement typeElement = (TypeElement) element.getEnclosingElement();
-            LoggerInfo("clickViewElements=" + element.getSimpleName());
-            Set<Element> elements = routesMap.get(typeElement);
-            if (elements != null) {
-                elements.add(element);
-            } else {
-                bindViews = new HashSet<>();
-                bindViews.add(element);
-                routesMap.put(typeElement, bindViews);
+        if (clickViewElements != null && clickViewElements.size() > 0) {
+            for (Element element : clickViewElements) {
+                //这是类名称
+                TypeElement typeElement = (TypeElement) element.getEnclosingElement();
+                LoggerInfo("clickViewElements=" + element.getSimpleName());
+                Set<Element> elements = routesMap.get(typeElement);
+                if (elements != null) {
+                    elements.add(element);
+                } else {
+                    bindViews = new HashSet<>();
+                    bindViews.add(element);
+                    routesMap.put(typeElement, bindViews);
+                }
             }
         }
 
