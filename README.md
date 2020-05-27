@@ -1,2 +1,3 @@
 # ButterKnifeTool
-使用APT和反射两种方式仿写ButterKnife的BindView
+使用APT和反射两种方式仿写ButterKnife
+实现了BindView和BindClick
